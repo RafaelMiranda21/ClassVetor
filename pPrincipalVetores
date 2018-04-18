@@ -1,0 +1,176 @@
+#include <iostream>
+#include "vetores.h"
+#include "vetores.cpp"
+
+
+int main()
+{
+    int n,i,escolha;
+    cout<<"Digite o tamanho max dos vetores: ";
+    cin>>n;
+
+    vetor a(n) , b(n), x(2*n);
+
+    cout<<"Digite os valores de A:   ";
+	if(a.lervetor(n))
+    cout<<"\n";
+    cout<<"Digite os valores de B:   ";
+    if(b.lervetor(n))
+    cout<<"\n";
+    cout<<"\t\t\t\tO QUE DESEJA FAZER COM OS CONJUNTOS A e B?\n";
+    cout<<"[1] Descobrir se os conjuntos sao vazios\n";
+    cout<<"[2] A u B\n";
+    cout<<"[3] A n B\n";
+    cout<<"[4] A - B\n";
+    cout<<"[5] B - A\n";
+    cout<<"[6] Descobrir se A e subconjunto de B\n";
+    cout<<"[7] Descobrir se B e subconjunto de A\n";
+    cout<<"[8] Descobrir se A e B sao conjuntos identicos\n";
+    cout<<"[9] Descobrir se A e B sao conjuntos disjuntos\n";
+    cout<<"[10] Amplitude de A e B\n";
+    cout<<"[11] Produto escalar entre A e B\n";
+    cout<<"[12] Maior subcadeia de forma crescente ordenada em A\n";
+    cout<<"[13] Maior subcadeia de forma decrescente ordenada em B\n";
+    cout<<"[14] Intercalar A e B de forma ordenada\n";
+    cout<<"Sua escolha e: ";
+    cin>>escolha;
+    cout<<"\n\n";
+  cout<<"========================================================================================================================\n";
+
+  switch(escolha)
+  {
+     case 1:
+       if(a.vazio())
+       {
+           cout<<"conjunto A vazio";
+       }
+       else
+       {
+           cout<<"conjunto A nao e vazio";
+       }
+       cout<<"\n";
+       if(b.vazio())
+       {
+           cout<<"conjunto B vazio";
+       }
+       else
+       {
+           cout<<"conjunto B nao e vazio";
+       }
+       break;
+
+     case 2:
+         cout<<"Conjunto C {";
+         x.uniao(a,b);
+         x.imprimir();
+         cout<<"}";
+        break;
+
+     case 3:
+         cout<<"Conjunto D {";
+         x.iguais(a,b);
+         x.imprimir();
+         cout<<"}";
+         break;
+
+     case 4:
+        cout<<"Conjunto E {";
+        x.subtracao(a,b);
+        x.imprimir();
+        cout<<"}";
+        break;
+
+     case 5:
+        cout<<"Conjunto E {";
+        x.subtracao(b,a);
+        x.imprimir();
+        cout<<"}";
+        break;
+
+     case 6:
+
+        if(x.subconjunto(a,b))
+        {
+            cout<<"A e subconjunto de B";
+        }
+        else
+        {
+            cout<<"A nao e subconjunto de B";
+        }
+        break;
+
+     case 7:
+
+        if(x.subconjunto(b,a))
+        {
+            cout<<"B e subconjunto de A";
+        }
+        else
+        {
+            cout<<"B nao e subconjunto de A";
+        }
+        break;
+
+     case 8:
+        if(x.identico(a,b))
+        {
+            cout<<"A e identico a B";
+        }
+        else
+        {
+            cout<<"A e B nao sao identicos";
+        }
+        break;
+
+     case 9:
+        if(x.disjunto(a,b))
+        {
+            cout<<"A e disjunto a B";
+        }
+        else
+        {
+            cout<<"A e B nao sao disjunto";
+        }
+        break;
+
+     case 10:
+
+        cout<<"Amplitude de A: "<<x.apl(a);
+        cout<<"\n";
+        cout<<"Amplitude de B: "<<x.apl(b);
+        break;
+
+     case 11:
+        cout<<"Produto escalar de A e B: "<<x.produtoescalar(a,b);
+        break;
+
+     case 12:
+        cout<<"G{\t";
+        x.cres(a);
+        x.imprimir();
+        cout<<"}";
+        break;
+
+     case 13:
+        cout<<"H{\t";
+        x.desc(b);
+        x.imprimir();
+        cout<<"}";
+
+     case 14:
+        cout<<"I{\t";
+        x.intercalar(a,b);
+        x.imprimir();
+        cout<<"}";
+        break;
+
+    default:
+        cout<<"VALOR DIGITADO INVALIDO PROGRAMA FINALIZADO!!";
+
+
+
+  }
+
+    cout<<"\n\n";
+
+}
