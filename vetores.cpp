@@ -102,20 +102,21 @@ void vetor::subtracao(vetor x, vetor y)
 }
 
 
-bool vetor::subconjunto(vetor x, vetor y)
+bool vetor::subconjunto(vetor x)
 {
-    int i,j,cont;
-	for(i=0;i<x.n;i++)
-	{
-	  for(j=0;j<y.n;j++)
-	  {
-	    if(x.vet[i] == y.vet[j])
-	    {
-		  cont++;
-	    }
-	  }
-	}
-    n = cont;
+    int i,j,cont=0;
+
+	for(i=0;i<n;i++)
+    {
+        for(j=0;j<x.n;j++)
+        {
+          if(vet[i] == x.vet[j])
+          {
+              cont++;
+          }
+        }
+    }
+
 	if(cont == n)
 	{
 		return true;
